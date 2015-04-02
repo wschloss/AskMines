@@ -29,7 +29,9 @@
   </div>
   <div class="field">
     <%= f.label :picture %><br>
-    <%= f.text_field :picture %>
+    <%= image_tag(@pet.picture_url, class: 'pet_image') if @pet.picture? %>
+    <%= f.file_field :picture %>
+    <%= f.hidden_field :picture_cache %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -6,12 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Pet.create(name: "Sally", age: "10", description: "Golden Retriever", picture: "golden_retriever.jpg")
-Pet.create(name: "Burt", age: "5", description: "English Bulldog", picture: "english_bulldog.jpg")
-Pet.create(name: "Fluffy", age: "2", description: "American Shorthair", pet_type: "cat", picture: "american_shorthair.jpg")
-Pet.create(name: "Whiskers", age: "6", description: "Siamese Cat", pet_type: "cat", picture: "siamese.jpg")
-Pet.create(name: "Sparky", age: "2", description: "German Shepherd", picture: "german_shepherd.jpg")
-Pet.create(name: "Missy", age: "5", description: "Yorkshire Terrier", picture: "yorkshire_terrier.jpg")
+Pet.create(name: "Sally", age: "10", description: "Golden Retriever", picture: File.open(File.join(Rails.root, 'public/uploads/pet/picture/1/golden_retriever.jpg')))
+Pet.create(name: "Burt", age: "5", description: "English Bulldog", picture: File.open(File.join(Rails.root, 'public/uploads/pet/picture/2/english_bulldog.jpg')))
+Pet.create(name: "Fluffy", age: "2", description: "American Shorthair", pet_type: "cat", picture: File.open(File.join(Rails.root, 'public/uploads/pet/picture/3/american_shorthair.jpg')))
+Pet.create(name: "Whiskers", age: "6", description: "Siamese Cat", pet_type: "cat", picture: File.open(File.join(Rails.root, 'public/uploads/pet/picture/4/siamese.jpg')))
+Pet.create(name: "Sparky", age: "2", description: "German Shepherd", picture: File.open(File.join(Rails.root, 'public/uploads/pet/picture/5/german_shepherd.jpg')))
+Pet.create(name: "Missy", age: "5", description: "Yorkshire Terrier", picture: File.open(File.join(Rails.root, 'public/uploads/pet/picture/6/yorkshire_terrier.jpg')))
 
 # Seed admin user, email: admin@email.com, password: password
 user = User.new

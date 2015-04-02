@@ -1,4 +1,7 @@
 class Pet < ActiveRecord::Base
+  # Uploader for pet image
+  mount_uploader :picture, PictureUploader
+
   has_many :selected_pets
 
   before_destroy :ensure_not_selected

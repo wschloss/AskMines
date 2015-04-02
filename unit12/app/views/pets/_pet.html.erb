@@ -3,7 +3,7 @@
     <td><%= pet.name %></td>
     <td><%= pet.age %></td>
     <td><%= pet.description %></td>
-    <td><%= image_tag pet.picture, class: 'pet_image'%></td>
+    <td><%= image_tag pet.picture_url, class: 'pet_image'%></td>
 
     <% if user_signed_in? %>
    	 	<% unless @adopting %>
