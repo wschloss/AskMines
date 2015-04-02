@@ -1,5 +1,7 @@
 Unit07::Application.routes.draw do
-  devise_for :users
+  # Devise auth routes
+  devise_for :users, controllers: { sessions: "users/sessions" }
+  
   resources :selected_pets
 
   resources :carts
