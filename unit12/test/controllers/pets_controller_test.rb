@@ -3,6 +3,9 @@ require 'test_helper'
 class PetsControllerTest < ActionController::TestCase
   setup do
     @pet = pets(:one)
+    # Authorize
+    @user = users(:one)
+    sign_in @user
   end
 
   test "should get index" do
