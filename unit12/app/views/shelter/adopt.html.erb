@@ -1,0 +1,25 @@
+<h1>Adoption Agreement</h1>
+
+<p>You have selected:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pet Type</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Description</th>
+      <th>Picture</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<% @cart.selected_pets.each do |selected_pet| %>
+        <%= render selected_pet.pet %>
+    <% end %>
+  </tbody>
+</table>
+
+<p>Do you promise to take good care of these pets?</p>
+<%= button_to "I agree!", shelter_finish_url %>
+<%= link_to "Not right now...", shelter_index_url %>

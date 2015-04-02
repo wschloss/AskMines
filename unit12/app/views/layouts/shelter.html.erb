@@ -1,0 +1,10 @@
+<% content_for :content do %>
+  <div id="left-column">
+	<%= render @cart %>
+  </div>
+  <div id="right-column">
+	<%= yield %>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

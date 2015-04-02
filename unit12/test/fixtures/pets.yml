@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+selected:
+  id: 1
+  name: selected
+  age:  selectedAge
+  description: selectedDescription
+
+one:
+  name: nameOne
+  age: ageOne
+  description: descriptionOne
+
+two:
+  name: nameTwo
+  age: ageTwo
+  description: descriptionTwo
+
+empty:
+  name:
+  age:
+  description:
+
+lengthNine:
+  name: nameLengthNine
+  age: ageLengthNine
+  description: xxxxxxxxx
+
+lengthTen:
+  name: nameTen
+  age: ageTen
+  description: xxxxxxxxxx
+
+lengthFourty:
+  name: nameFourty
+  age: ageFourty
+  description: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+lengthFourtyOne:
+  name: nameFourtyOne
+  age: ageFourtyOne
+  description: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+noName:
+  name:
+  age: ageNoName
+  description: descriptionNoName

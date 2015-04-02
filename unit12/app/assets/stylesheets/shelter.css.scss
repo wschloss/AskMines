@@ -1,0 +1,35 @@
+// Place all the styles related to the Shelter controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#left-column, #right-column {
+	float: left;
+	margin-top: -20px;
+}
+
+#right-column {
+	margin-left: 10px;
+	margin-bottom: 50px;
+	padding: 5px;
+}
+
+#left-column {
+	width: 200px;
+	font-size: 90%;
+	color: white;
+	background: #0066FF;
+	margin-right: 10px;
+	margin-left: -20px;
+	margin-bottom: 10px;
+	padding: 10px;
+
+	tbody tr { 
+		background: none;
+		td { 
+			border-top: 1px dotted white;
+			border-bottom: 1px dotted white; 
+		}
+	}
+}
+
+#button-holder .button_to { float: left; }

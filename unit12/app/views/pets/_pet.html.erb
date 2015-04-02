@@ -1,0 +1,15 @@
+ <tr>
+    <td><%= pet.pet_type %></td>
+    <td><%= pet.name %></td>
+    <td><%= pet.age %></td>
+    <td><%= pet.description %></td>
+    <td><%= image_tag pet.picture, class: 'pet_image'%></td>
+
+    <% if user_signed_in? %>
+   	 	<% unless @adopting %>
+    		<td><%= button_to 'Select Pet', selected_pets_path(pet_id: pet), remote: true %></td>
+    	<% end %>
+    <% else %>
+    	<td><%= link_to "Log In", new_user_session_url %> to adopt</td>
+    <% end %>
+</tr>

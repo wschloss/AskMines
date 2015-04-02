@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pet:</strong>
+  <%= @selected_pet.pet %>
+</p>
+
+<p>
+  <strong>Cart:</strong>
+  <%= @selected_pet.cart %>
+</p>
+
+<%= link_to 'Edit', edit_selected_pet_path(@selected_pet) %> |
+<%= link_to 'Back', selected_pets_path %>
