@@ -7,7 +7,7 @@ class PetsController < ApplicationController
 
   # GET /pets
   def index
-    @pets = Pet.all
+    @pets = Pet.get_available_pets
   end
 
   # GET /pets/1

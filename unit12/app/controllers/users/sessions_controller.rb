@@ -18,12 +18,14 @@ class Users::SessionsController < Devise::SessionsController
   # DELETE /resource/sign_out
   # On sign out, also set all pets in car to available
   def destroy
-    # Call devise default
-    super
     # Set all pets in cart to available
     @cart.selected_pets.each do |selected_pet|
       selected_pet.pet.set_status 'Available'
     end
+    # Destroy cart, which removes all SelectedPet models in the db
+    @cart.destroy if @cart.id == session[:cart_id]
+    # Call devise default
+    super
   end
 
   # protected

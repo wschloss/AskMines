@@ -29,7 +29,7 @@ class Pet < ActiveRecord::Base
 
   private
   def ensure_not_selected
-  	if selected_pets.empty?
+    if selected_pets.empty?
   	  true
   	else
   	  errors.add(:base, 'Pet has already been selected')
