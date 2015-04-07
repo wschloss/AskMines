@@ -1,3 +1,6 @@
+NOTE:  In order for uploading functionality to work, the /public/uploads directory must have read/write permissions applied to it for the service account that the web server/service is running as.
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the
