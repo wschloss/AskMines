@@ -11,5 +11,7 @@ class User < ActiveRecord::Base
   			uniqueness: true
 
   # User has many questions they have posted
-  has_many :questions
+  has_many :questions, dependent: :destroy
+  # User has many answers they have poster
+  has_many :answers, dependent: :destroy
 end
