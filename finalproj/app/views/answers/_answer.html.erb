@@ -7,6 +7,9 @@
 <p>
   <strong>Upvotes:</strong>
   <%= answer.upvotes %>
+  <% if !user_signed_in? || current_user.id != answer.user_id %>
+    <%= button_to 'Upvote!', answer_upvote_path(@question,answer) %>
+  <% end %>
 </p>
 
 <% if user_signed_in? && (current_user.id == answer.user_id || current_user.isadmin) %>

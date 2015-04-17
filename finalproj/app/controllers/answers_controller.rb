@@ -1,12 +1,12 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: [:edit, :update, :destroy]
+  before_action :set_answer, only: [:edit, :update, :destroy, :upvote]
   # Set this answers question
   before_action :set_question
 
   # User authentication required for answer modification
   before_action :authenticate_user!
   # Can only modify answers that belong to the logged in user
-  before_action :confirm_owner, except: [:create]
+  before_action :confirm_owner, except: [:create, :upvote]
 
 
   # GET questions/1/answers/1/edit
@@ -47,6 +47,17 @@ class AnswersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @question, notice: 'Answer was successfully destroyed.' }
     end
+  end
+
+  # POST /answers/1/upvote
+  def upvote
+    @answer.update(upvotes: @answer.upvotes + 1)
+    # Rep for answer author
+    @answer.user.update(reputation: @answer.user.reputation + 1)
+    # Notification for answer author
+    Notification.create(user_id: @answer.user.id, question_id: @question.id, content: 'Your answer was upvoted!  Nice job!')
+    
+    redirect_to question_url(@question), notice: 'Answer upvoted!'
   end
 
   private

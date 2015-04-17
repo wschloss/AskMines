@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
   # Removes notifications
   delete 'notifications', to: 'notifications#remove'
+  # Upvotes a question, the users rep, and creates a notification
+  post 'questions/:id/upvote', to: 'questions#upvote', as: :question_upvote
+  # Upvotes an answer, the users rep, and creates a notification
+  post 'questions/:question_id/answers/:id/upvote', to: 'answers#upvote', as: :answer_upvote
+
   root 'questions#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

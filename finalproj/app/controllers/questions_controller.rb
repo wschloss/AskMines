@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :upvote]
   # set answers array to display on show for this question
   before_action :set_answers, only: [:show]
   # set tags array to display when showing this question
@@ -66,6 +66,17 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
     end
+  end
+
+  # POST /questions/1/upvote
+  def upvote
+    @question.update(upvotes: @question.upvotes + 1)
+    # Rep for question author
+    @question.user.update(reputation: @question.user.reputation + 1)
+    # Notification for question author
+    Notification.create(user_id: @question.user.id, question_id: @question.id, content: 'Your question was upvoted!  Nice job!')
+    
+    redirect_to question_url(@question), notice: 'Question upvoted!'
   end
 
   private
