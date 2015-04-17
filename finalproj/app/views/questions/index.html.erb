@@ -6,7 +6,7 @@
       <th>Title</th>
       <th>Tags</th>
       <th>Upvotes</th>
-      <th>Author</th>
+      <th>Author (rep)</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,7 +21,7 @@
           <% end %>
         </td>
         <td><%= question.upvotes %></td>
-        <td><%= question.user.username %></td>
+        <td><%= render question.user %></td>
         <td><%= link_to 'Show', question %></td>
         <% if user_signed_in? && (current_user.id == question.user_id || current_user.isadmin) %>
           <td><%= link_to 'Edit', edit_question_path(question) %></td>
