@@ -7,17 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>Ask Mines</h1>
+
+<h1 id="header">Ask Mines</h1>
+
 <hr>
 
-<div id="login">
-  <% if user_signed_in? %>
-	Signed in as <b><%= current_user.username %></b>.  Not you? <%= link_to "Sign out", destroy_user_session_url, method: :delete %>
-  <% else %>
-	<%= link_to "Log In", new_user_session_url %> <%= link_to "Sign Up", new_user_registration_url %>
-  <% end %>
-</div>
-
+<!-- User notifications -->
 <div id="notifications">
   <% if user_signed_in? && !current_user.notifications.empty? %>
     <ul>
@@ -30,10 +25,27 @@
   <% end %>
 </div>
 
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
+<div id="wrapper">
+  <div id="left-col">
+    <!-- Login links and signed in user -->
+    <div id="login-box">
+      <% if user_signed_in? %>
+    	Signed in as <b><%= current_user.username %></b>.  Not you? <%= link_to "Sign out", destroy_user_session_url, method: :delete %>
+      <% else %>
+    	<%= link_to "Log In", new_user_session_url %> <%= link_to "Sign Up", new_user_registration_url %>
+      <% end %>
+    </div>
+  </div>
 
-<%= yield %>
+  <div id="right-col">
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
+
+    <div id="content">
+      <%= yield %>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
