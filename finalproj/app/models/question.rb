@@ -9,4 +9,7 @@ class Question < ActiveRecord::Base
   # Destroy answers on question delete
   has_many 	:answers, 
   			dependent: :destroy
+
+  # A question belongs to the user that posted it
+  belongs_to :user
 end

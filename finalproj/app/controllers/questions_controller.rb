@@ -3,6 +3,11 @@ class QuestionsController < ApplicationController
   # set answers array to display on show for this question
   before_action :set_answers, only: [:show]
 
+  # User authentication to change questions
+  before_action :authenticate_user!, except: [:index, :show]
+  # Ensure only the owner of the question can modify it
+  before_action :confirm_owner, only: [:edit, :update, :destroy]
+
   # GET /questions
   def index
     @questions = Question.all
@@ -26,6 +31,8 @@ class QuestionsController < ApplicationController
   # POST /questions
   def create
     @question = Question.new(question_params)
+    # Current user owns this new question
+    @question.user_id = current_user.id
 
     respond_to do |format|
       if @question.save
@@ -63,6 +70,16 @@ class QuestionsController < ApplicationController
 
     def set_answers
       @answers = Question.find(params[:id]).answers
+    end
+
+    def confirm_owner
+      if user_signed_in?
+        unless current_user.isadmin
+          if Question.find(params[:id]).user_id != current_user.id
+            redirect_to questions_url, alert: 'You are not allowed to modify other user\'s questions.'
+          end
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

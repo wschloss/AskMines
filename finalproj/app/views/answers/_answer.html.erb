@@ -1,3 +1,4 @@
+<p><%= answer.user.username %>
 <p>
   <strong>Content:</strong>
   <%= answer.content %>
@@ -8,4 +9,10 @@
   <%= answer.upvotes %>
 </p>
 
-<%= link_to 'Edit', edit_question_answer_path(@question,answer) %>
+<% if user_signed_in? && (current_user.id == answer.user_id || current_user.isadmin) %>
+  <%= link_to 'Edit', edit_question_answer_path(@question,answer) %>
+<% end %>
+
+<% if user_signed_in? && current_user.isadmin %>
+  <%= link_to 'Delete', question_answer_url(@question, answer), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

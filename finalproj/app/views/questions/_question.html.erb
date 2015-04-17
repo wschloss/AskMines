@@ -1,6 +1,6 @@
 <p>
   <strong>Title:</strong>
-  <%= question.title %>
+  <%= question.title %> - <%= question.user.username %>
 </p>
 
 <p>
@@ -12,3 +12,11 @@
   <strong>Upvotes:</strong>
   <%= question.upvotes %>
 </p>
+
+<% if user_signed_in? && (current_user.id == question.user_id || current_user.isadmin) %>
+  <%= link_to 'Edit', edit_question_path(question) %>
+<% end %>
+
+<% if user_signed_in? && current_user.isadmin %>
+  <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
