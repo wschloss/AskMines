@@ -2,6 +2,8 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   # set answers array to display on show for this question
   before_action :set_answers, only: [:show]
+  # set tags array to display when showing this question
+  before_action :set_tags, only: [:show]
 
   # User authentication to change questions
   before_action :authenticate_user!, except: [:index, :show]
@@ -36,6 +38,8 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+        # Build tag models for this question
+        build_tags
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
       else
         format.html { render :new }
@@ -47,6 +51,8 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
+        # Rebuilds tags for this question
+        build_tags
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
       else
         format.html { render :edit }
@@ -72,6 +78,10 @@ class QuestionsController < ApplicationController
       @answers = Question.find(params[:id]).answers
     end
 
+    def set_tags
+      @tags = Question.find(params[:id]).tags
+    end
+
     def confirm_owner
       if user_signed_in?
         unless current_user.isadmin
@@ -85,5 +95,16 @@ class QuestionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
       params.require(:question).permit(:title, :content)
+    end
+
+    # Builds tag model for each selected tag with this question as the owner
+    def build_tags 
+      # First flush all tags so a duplicate record doesn't occur
+      Tag.delete(@question.tags)
+
+      tobuild = params[:tags]
+      tobuild.each do |category|
+        Tag.create(question_id: @question.id, category: category)
+      end unless tobuild.nil?
     end
 end

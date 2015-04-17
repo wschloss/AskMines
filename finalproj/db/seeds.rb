@@ -44,3 +44,10 @@ q2.answers.create(content: 'Just wait until May, my friend.', user_id: u1.id)
 q3.answers.create(content: 'Since I am not an eater myself, I can\'t help you.', user_id: u1.id)
 q3.answers.create(content: 'Sherpa house, where spicy really means spicy', user_id: u3.id)
 
+# Seed a few tags for questions
+q1.tags.create(category: 'Fun')
+q1.tags.create(category: 'Other')
+q2.tags.create(category: 'Other')
+q3.tags.create(category: 'Food')
+q3.tags.create(category: 'Housing')
+

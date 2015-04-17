@@ -19,6 +19,11 @@
     <%= f.label :content %><br>
     <%= f.text_area :content, size: "75x25" %>
   </div>
+  <!-- Sends selected tags to build -->
+  <div class="field">
+    <%= f.label :tags %><br>
+    <%= select_tag :tags, options_for_select(Tag::TAG_OPTIONS), {multiple: true} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -10,6 +10,9 @@ class Question < ActiveRecord::Base
   has_many 	:answers, 
   			dependent: :destroy
 
+  has_many  :tags,
+        dependent: :destroy
+
   # A question belongs to the user that posted it
   belongs_to :user
 end

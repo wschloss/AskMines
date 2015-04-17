@@ -4,6 +4,12 @@
 </p>
 
 <p>
+  <% @tags.each do |tag| %>
+    <%= render tag %>
+  <% end %>
+</p>
+
+<p>
   <strong>Content:</strong>
   <%= question.content %>
 </p>
