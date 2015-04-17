@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   # User has many questions they have posted
   has_many :questions, dependent: :destroy
-  # User has many answers they have poster
+  # User has many answers they have posted
   has_many :answers, dependent: :destroy
+  # User has notifications about their questions and answers
+  has_many :notifications, dependent: :destroy
 end

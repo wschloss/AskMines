@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :answers, except: [:index, :show, :new]
   end
 
+  # Removes notifications
+  delete 'notifications', to: 'notifications#remove'
   root 'questions#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -10,7 +10,12 @@ class Question < ActiveRecord::Base
   has_many 	:answers, 
   			dependent: :destroy
 
+  # Tags belong to a question to denote content
   has_many  :tags,
+        dependent: :destroy
+
+  # Relationship used to destroy notifications when question destroyed
+  has_many :notifications,
         dependent: :destroy
 
   # A question belongs to the user that posted it

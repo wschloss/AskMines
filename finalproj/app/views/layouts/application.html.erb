@@ -18,6 +18,18 @@
   <% end %>
 </div>
 
+<div id="notifications">
+  <% if user_signed_in? && !current_user.notifications.empty? %>
+    <ul>
+      <% current_user.notifications.each do |notif| %>
+        <%= render notif %>
+      <% end %>
+    </ul>
+    <%= link_to 'Done', notifications_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <hr>
+  <% end %>
+</div>
+
 <p id="notice"><%= notice %></p>
 <p id="alert"><%= alert %></p>
 

@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
   # User authentication required for answer modification
   before_action :authenticate_user!
   # Can only modify answers that belong to the logged in user
-  before_action :confirm_owner
+  before_action :confirm_owner, except: [:create]
 
 
   # GET questions/1/answers/1/edit
@@ -21,6 +21,8 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
+        # Notification for question author
+        build_answered_notification
         format.html { redirect_to @question, notice: 'Answer was successfully created.' }
       else
         format.html { render :new }
@@ -70,5 +72,10 @@ class AnswersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
       params.require(:answer).permit(:content)
+    end
+
+    # Builds a notification for the question author that their question was answered
+    def build_answered_notification
+      Notification.create(user_id: @question.user.id, question_id: @question.id, content: 'Your question got a new answer!')
     end
 end
