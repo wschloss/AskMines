@@ -19,17 +19,32 @@
 	width: 100%;
 	min-height: 90px;
 	height: auto;
-	background: #BEE3FA;
-	border-radius: 5px;
+	overflow: auto;
+	background: #B3E5FF;
+	border-radius: 10px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	clear: both;
+
+	-webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
 
 	span { 
 		float: left; 
 		margin-left: 3px;
 		margin-right: 3px;
 	}
+}
+
+#question-wrapper:hover {
+	-webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 #question-title {
@@ -44,11 +59,11 @@
 #question-upvotes {
 	width: 10%;
 	text-align: center;
-	line-height: 90px;
 }
 
 #question-author {
 	width: 25%;
+	height: 100%;
 	border-left: 1px solid grey;
 	padding-left: 3px;
 }

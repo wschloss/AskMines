@@ -1,21 +1,23 @@
-<p><%= render answer.user %></p>
-<p>
-  <strong>Content:</strong>
-  <%= answer.content %>
-</p>
+<div id="answer-wrapper">
+  <span id="answer-content">
+    <%= answer.content %>
+  </span>
+  <span id="answer-upvotes">
+  	<%= answer.upvotes %>
+  	<% if !user_signed_in? || current_user.id != answer.user_id %>
+      <%= button_to 'Upvote!', answer_upvote_path(@question,answer) %>
+    <% end %>
+  </span>
+  <span id="answer-author">
+  	<%= render answer.user %>
+  </span>
+  <span id="answer-mod-links">
+	<% if user_signed_in? && (current_user.id == answer.user_id || current_user.isadmin) %>
+	  <%= link_to 'Edit', edit_question_answer_path(@question,answer) %>
+	<% end %>
 
-<p>
-  <strong>Upvotes:</strong>
-  <%= answer.upvotes %>
-  <% if !user_signed_in? || current_user.id != answer.user_id %>
-    <%= button_to 'Upvote!', answer_upvote_path(@question,answer) %>
-  <% end %>
-</p>
-
-<% if user_signed_in? && (current_user.id == answer.user_id || current_user.isadmin) %>
-  <%= link_to 'Edit', edit_question_answer_path(@question,answer) %>
-<% end %>
-
-<% if user_signed_in? && current_user.isadmin %>
-  <%= link_to 'Delete', question_answer_url(@question, answer), method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+	<% if user_signed_in? && current_user.isadmin %>
+	  <%= link_to 'Delete', question_answer_url(@question, answer), method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+  </span>
+</div>

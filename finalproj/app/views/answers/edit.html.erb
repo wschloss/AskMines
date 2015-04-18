@@ -3,6 +3,10 @@
 <!-- Render question for user to reference -->
 <%= render @question %>
 
+<%= @question.content %>
+
+<hr>
+
 <%= render 'form' %>
 
 <%= link_to 'Back', @question %>

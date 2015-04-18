@@ -1,3 +1,42 @@
 // Place all the styles related to the Answers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#answer-wrapper {
+	width: 100%;
+	min-height: 90px;
+	height: auto;
+	overflow: auto;
+	background: #B3E5FF;
+	border-radius: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	clear: both;
+
+	span { 
+		float: left; 
+		margin-left: 3px;
+		margin-right: 3px;
+	}
+}
+
+#answer-content {
+	width: 45%;
+	padding: 5px;
+}
+
+#answer-upvotes {
+	width: 10%;
+	text-align: center;
+}
+
+#answer-author {
+	width: 25%;
+	height: 100%;
+	border-left: 1px solid grey;
+	padding-left: 3px;
+}
+
+#answer-mod-links {
+	float: left;
+}

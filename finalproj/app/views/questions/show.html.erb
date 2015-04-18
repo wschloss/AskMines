@@ -1,7 +1,6 @@
 <%= render @question %>
 
 <%= @question.content %>
-<%= button_to 'Upvote!', question_upvote_path(@question) %>
 
 <hr>
 <% unless @answers.empty? %>
