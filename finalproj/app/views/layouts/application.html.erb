@@ -10,7 +10,8 @@
 
 <h1 id="header">Ask Mines</h1>
 
-<hr>
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
 
 <!-- User notifications -->
 <div id="notifications">
@@ -25,24 +26,39 @@
   <% end %>
 </div>
 
+<hr>
+
 <div id="wrapper">
   <div id="left-col">
     <!-- Login links and signed in user -->
     <div id="login-box">
-      <% if user_signed_in? %>
-    	Signed in as <b><%= current_user.username %></b>.  Not you? <%= link_to "Sign out", destroy_user_session_url, method: :delete %>
-      <% else %>
-    	<%= link_to "Log In", new_user_session_url %> <%= link_to "Sign Up", new_user_registration_url %>
+      <!-- avoid login form if displayed in content already -->
+      <% unless content_for(:devise) %>
+        <% if user_signed_in? %>
+      	  <p>Welcome!</p><br>
+          <%= render current_user %><br>
+          <%= link_to "Sign out", destroy_user_session_url, method: :delete %>
+        <% else %>
+          <!-- display login form -->
+          <p>Sign in to contribute!</p>
+          <%= form_for(:user, :url => session_path(:user)) do |f| %>
+            <%= f.label :username %>
+            <%= f.text_field :username %><br>
+            <%= f.label :password %>
+            <%= f.password_field :password %><br>
+            <%= f.submit 'Sign in' %>
+          <% end %><br>
+          <p>No account? 
+      	    <%= link_to "Sign up!", new_user_registration_url %>
+          </p>
+        <% end %>
       <% end %>
     </div>
   </div>
 
   <div id="right-col">
-    <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
-
     <div id="content">
-      <%= yield %>
+      <%= content_for?(:devise) ? yield(:devise) : yield %>
     </div>
   </div>
 </div>

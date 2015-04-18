@@ -1,3 +1,58 @@
 // Place all the styles related to the Questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Single tag styling
+#tag {
+	height: 35px;
+	width: 60px;
+	background-color: #F5C4C4;
+	border-radius: 5px;
+	float: left;
+	text-align: center;
+	line-height: 30px;
+	margin: 5px;
+}
+
+// Question entry styling
+#question-wrapper {
+	width: 100%;
+	min-height: 90px;
+	height: auto;
+	background: #BEE3FA;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	clear: both;
+
+	span { 
+		float: left; 
+		margin-left: 3px;
+		margin-right: 3px;
+	}
+}
+
+#question-title {
+	width: 15%;
+	text-align: center;
+}
+
+#question-tags {
+	width: 30%;
+}
+
+#question-upvotes {
+	width: 10%;
+	text-align: center;
+	line-height: 90px;
+}
+
+#question-author {
+	width: 25%;
+	border-left: 1px solid grey;
+	padding-left: 3px;
+}
+
+#question-mod-links {
+	width: 15%;
+}

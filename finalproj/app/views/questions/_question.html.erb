@@ -1,31 +1,26 @@
-<p>
-  <strong>Title:</strong>
-  <%= question.title %> - <%= render question.user %>
-</p>
-
-<p>
-  <% @tags.each do |tag| %>
-    <%= render tag %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= question.content %>
-</p>
-
-<p>
-  <strong>Upvotes:</strong>
-  <%= question.upvotes %>
-  <% if !user_signed_in? || current_user.id != question.user_id %>
-    <%= button_to 'Upvote!', question_upvote_path(question) %>
-  <% end %>
-</p>
-
-<% if user_signed_in? && (current_user.id == question.user_id || current_user.isadmin) %>
-  <%= link_to 'Edit', edit_question_path(question) %>
-<% end %>
-
-<% if user_signed_in? && current_user.isadmin %>
-  <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+<div id="question-wrapper">
+  <span id="question-title">
+    <%= link_to(question) do %>
+      <%= question.title %>
+    <% end %>
+  </span>
+  <span id="question-tags">
+    <% question.tags.each do |tag| %>
+      <%= render tag %>
+    <% end %>
+  </span>
+  <span id="question-upvotes">
+    <%= question.upvotes %>
+  </span>
+  <span id="question-author">
+    <%= render question.user %>
+  </span>
+  <span id="question-mod-links">
+    <% if user_signed_in? && (current_user.id == question.user_id || current_user.isadmin) %>
+      <%= link_to 'Edit', edit_question_path(question) %>
+    <% end %>
+    <% if user_signed_in? && current_user.isadmin %>
+      <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </span>
+</div>
