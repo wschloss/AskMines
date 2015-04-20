@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   # Add username field for auth to devise params
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_defaults
+
 
   protected
 
@@ -13,4 +15,11 @@ class ApplicationController < ActionController::Base
         u.permit :username, :email, :password, :password_confirmation
     end
   end
+
+
+    def set_defaults
+      @default_avatar = "/uploads/default/default.jpg"
+
+    end
+
 end

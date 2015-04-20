@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417180227) do
+ActiveRecord::Schema.define(version: 20150419232423) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20150417180227) do
     t.string   "username"
     t.integer  "reputation",             default: 0
     t.boolean  "isadmin",                default: false
+    t.string   "signature"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

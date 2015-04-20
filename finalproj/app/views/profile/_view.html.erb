@@ -1,0 +1,22 @@
+<%if !@user.nil?%>
+<span id="username">Username: <%=@user.username%></span><br>
+<span id="email">Email: <%=@user.email%></span><br>
+<span id="last_sign_in_at">Last Sign In At: <%=@user.last_sign_in_at%></span><br>
+<span id="signature">Signature: <%=@user.signature%></span><br>
+
+<%
+if !@user.avatar.url.nil?
+	av = @user.avatar.url
+else
+	av = @default_avatar
+end
+%>
+<span id="email">Avatar Link: <%=av%></span><br>
+
+	<div id='avatar'>
+	  <%=image_tag(av, :class => "image_avatar")%>
+	</div>
+
+<%else%>
+<span id="no_user">No user exists with this user name</span>
+<%end%>

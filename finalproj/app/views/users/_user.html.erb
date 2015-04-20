@@ -1,10 +1,18 @@
+		<%
+		if user.avatar.url.nil?
+			av = @default_avatar
+		else
+			av = user.avatar.url
+		end
+		%>
 <div id='user-wrapper'>
 	<!-- Will change to an image tag -->
 	<div id='avatar'>
-	  (user image here) 
+	  <%=image_tag(av, :class => "image_avatar")%>
 	</div>
 	<div id='user-credentials'>
-	  <%= user.username %> <br>
+
+	  <%= link_to user.username, "/profile/" + user.username %><br>
 	  <%= user.reputation %> Rep
 	</div>
 </div>

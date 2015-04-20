@@ -1,0 +1,38 @@
+<h1>Listing Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Avatar</th>
+      <th>Username</th>
+      <th>Email Address</th>
+      <th>Last Logged In</th>
+      <th>Signature</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |u| %>
+		<%
+		if u.avatar.url.nil?
+			av = @default_avatar
+		else
+			av = u.avatar.url
+		end
+		%>
+		<tr>
+		<td>
+			<div id='avatar'>
+			  <%=image_tag(av, :class => "image_avatar")%>
+			</div>
+		</td>
+		<td><%= link_to u.username, "/profile/" + u.username %></td>
+		<td><%= u.email %></td>
+		<td><%= u.last_sign_in_at %></td>
+		<td><%= u.signature %></td>
+		</tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

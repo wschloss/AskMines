@@ -1,0 +1,34 @@
+<%if !@user.nil?%>
+<%= form_tag({:controller => "profile", :action => "update"}, {:multipart => true}) do%>
+
+  <%= label_tag(:q, "Username:") %>
+  <%= label_tag(:username, @user.username) %>
+  <br><br>
+  <%= label_tag(:q, "Signature:") %>
+  <%= text_area_tag(:signature, @user.signature, size: "80x6") %>
+
+  	<br><br>
+	<%
+	if @user.avatar.url.nil?
+		av = @default_avatar
+	else
+		av = @user.avatar.url
+	end
+	%>
+	<span id="id">Current Avatar: <%=image_tag(av, size: "100x100")%></span><br>
+
+
+  <br><br>
+  <%= label_tag(:q, "Choose New Avatar:") %>
+  <%= file_field_tag "upload" %>
+
+  	<br><br>
+	<br><br>
+	<%= submit_tag("Save") %>
+<% end %>
+
+
+
+<%else%>
+<span id="no_user">No user exists with this user name</span>
+<%end%>

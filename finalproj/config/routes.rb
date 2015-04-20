@@ -13,6 +13,11 @@ Rails.application.routes.draw do
 
   root 'questions#index'
 
+  get 'profile/list' => 'profile#index'
+  get 'profile/:username' => 'profile#show'
+  post 'profile/:username' => 'profile#update'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

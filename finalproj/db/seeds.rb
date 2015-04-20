@@ -13,6 +13,7 @@ u1.email = 'regular1@email.com'
 u1.username = 'regular1'
 u1.password = 'password'
 u1.password_confirmation = 'password'
+u1.avatar = File.open(File.join(Rails.root, 'public/uploads/default/gal.jpg'))
 u1.save!
 
 u2 = User.new
@@ -21,6 +22,7 @@ u2.username = 'regular2'
 u2.password = 'password'
 u2.password_confirmation = 'password'
 u2.reputation = 5
+u2.avatar = File.open(File.join(Rails.root, 'public/uploads/default/guy.jpg'))
 u2.save!
 
 u3 = User.new
@@ -30,6 +32,7 @@ u3.password = 'password'
 u3.password_confirmation = 'password'
 u3.isadmin = true
 u3.reputation = 10
+u3.avatar = File.open(File.join(Rails.root, 'public/uploads/default/default.jpg'))
 u3.save!
 
 # Seed a few questions from different users

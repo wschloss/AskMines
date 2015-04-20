@@ -16,4 +16,6 @@ class User < ActiveRecord::Base
   has_many :answers, dependent: :destroy
   # User has notifications about their questions and answers
   has_many :notifications, dependent: :destroy
+
+  mount_uploader :avatar, AvatarUploader
 end

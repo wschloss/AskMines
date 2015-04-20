@@ -1,0 +1,18 @@
+<div id='profile-wrapper'>
+<%
+render_form = false
+
+if user_signed_in?
+	if current_user.id == @user.id
+		render_form = true
+	end
+end
+%>
+
+<%if render_form%>
+	<%=render 'form'%>
+<%else%>
+	<%=render 'view'%>
+<%end%>
+
+</div>

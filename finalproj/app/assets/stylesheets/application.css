@@ -87,6 +87,13 @@ User rendering here
 	float: left;
 }
 
+.image_avatar {
+	width: 75px;
+	height: 75px;
+	text-align: center;
+	float: left;
+}
+
 #user-credentials {
 	float: left;
 	height: 75px;
