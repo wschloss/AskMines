@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root 'questions#index'
 
   get 'profile/list' => 'profile#index'
+  get 'profile/:username/delete', to: 'profile#delete'
   get 'profile/:username' => 'profile#show'
   post 'profile/:username' => 'profile#update'
 

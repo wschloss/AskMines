@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update]
+  before_action :set_profile, only: [:show, :edit, :update, :delete]
 
   # User authentication to change questions
   #before_action :authenticate_user!
@@ -24,9 +24,15 @@ class ProfileController < ApplicationController
       if @user.save
         redirect_to :controller=>'profile', :action => 'show', :username => @user.username
       end
-
-
   end
+
+#GET /profile/username/delete
+  def delete
+    #put delete code here
+    @user.destroy
+    redirect_to :controller=>'profile', :action => 'index', :username => @user.username
+  end
+
 
   private
     def set_profile

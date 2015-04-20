@@ -8,6 +8,16 @@
       <th>Email Address</th>
       <th>Last Logged In</th>
       <th>Signature</th>
+      <%
+		if user_signed_in?
+			if current_user.isadmin
+				%>
+			      <th>Actions</th>
+
+				<%
+			end
+		end
+		%>
     </tr>
   </thead>
 
@@ -30,6 +40,16 @@
 		<td><%= u.email %></td>
 		<td><%= u.last_sign_in_at %></td>
 		<td><%= u.signature %></td>
+	    <%
+		if user_signed_in?
+			if current_user.isadmin
+				%>
+			      <td><%= link_to "Delete", "/profile/" + u.username + "/delete" %></td>
+				<%
+			end
+		end
+		%>
+
 		</tr>
     <% end %>
   </tbody>
