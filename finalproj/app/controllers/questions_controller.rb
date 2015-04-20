@@ -15,6 +15,11 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
+  #post /query
+  def query
+
+  end
+
   # GET /questions/1
   def show
     # Blank answer object so a user can submit an answer

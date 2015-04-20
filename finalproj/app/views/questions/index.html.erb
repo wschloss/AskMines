@@ -1,5 +1,7 @@
-<h1>Listing Questions</h1>
-
+<div id="container">
+	<div id="question_list"><h1>Listing Questions</h1></div>
+	<div id="question_query"><%=link_to "Query Interface", :controller => :questions, :action => :query%></div>
+</div>
 
 <% @questions.each do |question| %>
   <%= render question %>

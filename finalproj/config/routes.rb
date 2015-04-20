@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # Upvotes an answer, the users rep, and creates a notification
   post 'questions/:question_id/answers/:id/upvote', to: 'answers#upvote', as: :answer_upvote
 
+  get 'query' => 'questions#query'
+
   root 'questions#index'
 
   get 'profile/list' => 'profile#index'
