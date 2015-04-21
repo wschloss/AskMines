@@ -13,12 +13,15 @@
     <a href="/">Ask Mines</a>
   </span>
   <span id="header-buttons">
-    <% if user_signed_in? %>
-      Welcome <%= current_user.username %>!  Not you? <%= button_to "Sign out", destroy_user_session_url, method: :delete %>
-    <% else %>
+    <% if !user_signed_in? %>
       <%= button_to "log in", new_user_session_url, method: :get %>
       <%= button_to "sign up", new_user_registration_url, method: :get %>
+    <% else %>
+      <p id="welcome-message">Welcome <%= current_user.username %></p> 
+      <%= button_to "sign out", destroy_user_session_url, method: :delete %>
+      <%= button_to "profile", user_profile_path(current_user), method: :get %>
     <% end %>
+    <%= button_to "users", profile_list_path, method: :get %>
   </span>
 </h1>
 
@@ -37,10 +40,6 @@
     <hr>
   <% end %>
 </div>
-    <br>
-    <div id="all_users"><a href="/profile/list">List All Users</a></div>
-
-<hr>
 
 <div id="wrapper">
   <div id="content">
