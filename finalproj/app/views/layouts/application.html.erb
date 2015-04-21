@@ -8,7 +8,17 @@
 </head>
 <body>
 
-<h1 id="header"><a href="/">Ask Mines</a></h1>
+<h1 id="header">
+  <a href="/" id="root-link">Ask Mines</a>
+  <div id="header-links">
+    <% if user_signed_in? %>
+      Welcome <%= current_user.username %>!  Not you? <%= link_to "Sign out", destroy_user_session_url, method: :delete %>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_url %>
+      <%= link_to "Sign up!", new_user_registration_url %>
+    <% end %>
+  </div>
+</h1>
 
 <p id="notice"><%= notice %></p>
 <p id="alert"><%= alert %></p>
@@ -25,43 +35,14 @@
     <hr>
   <% end %>
 </div>
+    <br>
+    <div id="all_users"><a href="/profile/list">List All Users</a></div>
 
-<hr>rails
+<hr>
 
 <div id="wrapper">
-  <div id="left-col">
-    <!-- Login links and signed in user -->
-    <div id="login-box">
-      <!-- avoid login form if displayed in content already -->
-      <% unless content_for(:devise) %>
-        <% if user_signed_in? %>
-      	  <p>Welcome!</p><br>
-          <%= render current_user %><br>
-          <%= link_to "Sign out", destroy_user_session_url, method: :delete %>
-        <% else %>
-          <!-- display login form -->
-          <p>Sign in to contribute!</p>
-          <%= form_for(:user, :url => session_path(:user)) do |f| %>
-            <%= f.label :username %>
-            <%= f.text_field :username %><br>
-            <%= f.label :password %>
-            <%= f.password_field :password %><br>
-            <%= f.submit 'Sign in' %>
-          <% end %><br>
-          <p>No account? 
-      	    <%= link_to "Sign up!", new_user_registration_url %>
-          </p>
-        <% end %>
-      <% end %>
-    </div>
-    <br>
-    <div id="sll_users"><a href="/profile/list">List All Users</a></div>
-  </div>
-
-  <div id="right-col">
-    <div id="content">
-      <%= content_for?(:devise) ? yield(:devise) : yield %>
-    </div>
+  <div id="content">
+    <%= content_for?(:devise) ? yield(:devise) : yield %>
   </div>
 </div>
 
