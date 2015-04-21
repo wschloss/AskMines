@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'questions/:question_id/answers/:id/upvote', to: 'answers#upvote', as: :answer_upvote
 
   get 'query' => 'questions#query'
+  get 'search' => 'questions#search'
 
   root 'questions#index'
 

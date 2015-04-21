@@ -15,9 +15,20 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  #post /query
+  #GET /query
   def query
+    # Just displays the search form
+  end
 
+  #GET /search
+  def search
+    # Return the list of question based on the :content
+    # parameter sent by the form
+
+    # Testing the content comes through...
+    @content = params[:content]
+
+    # @questions = search_by_content(@content)
   end
 
   # GET /questions/1
