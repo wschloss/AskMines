@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   root 'questions#index'
 
   get 'profile/list' => 'profile#index'
-  get 'profile/:username/delete', to: 'profile#delete'
-  get 'profile/:username' => 'profile#show'
-  post 'profile/:username' => 'profile#update'
+  delete 'profile/:id/delete', to: 'profile#delete', as: :user_delete
+  get 'profile/:id', to: 'profile#show', as: :user_profile
+  post 'profile/:id', to: 'profile#update', as: :user_profile_update
 
 
   # The priority is based upon order of creation: first created -> highest priority.

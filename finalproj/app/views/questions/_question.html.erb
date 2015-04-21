@@ -1,23 +1,34 @@
 <div id="question-wrapper">
-  <span id="question-title">
-    <%= link_to(question) do %>
-      <%= question.title %>
-    <% end %>
-  </span>
-  <span id="question-tags">
-    <% question.tags.each do |tag| %>
-      <%= render tag %>
-    <% end %>
-  </span>
   <span id="question-upvotes">
     <%= question.upvotes %>
     <% if !user_signed_in? || current_user.id != question.user_id %>
       <%= button_to 'Upvote!', question_upvote_path(question) %>
     <% end %>
   </span>
-  <span id="question-author">
-    <%= render question.user %>
+  <span id="question-answers">
+    <%= question.answers.size %><br>
+    answers
   </span>
+  <div id="title-tags-wrap">
+    <span id="question-title">
+      <%= link_to(question) do %>
+        <%= question.title %>
+      <% end %>
+    </span>
+    <span id="question-tags">
+      <% question.tags.each do |tag| %>
+        <%= render tag %>
+      <% end %>
+    </span><br>
+    <span id="question-author">
+      asked by 
+      <%= link_to user_profile_path(question.user) do %>
+        <%= question.user.username %> 
+      <% end %>
+      (<%= question.user.reputation %>)
+    </span>
+  </div>
+  <!--
   <span id="question-mod-links">
     <% if user_signed_in? && (current_user.id == question.user_id || current_user.isadmin) %>
       <%= link_to 'Edit', edit_question_path(question) %>
@@ -26,4 +37,5 @@
       <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
   </span>
+  -->
 </div>

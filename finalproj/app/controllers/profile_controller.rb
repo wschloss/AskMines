@@ -1,12 +1,9 @@
 class ProfileController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :delete]
 
-  # User authentication to change questions
-  #before_action :authenticate_user!
-
-  # GET /profile/username
+  # GET /profile/1
   def show
-    # Blank answer object so a user can submit an answer
+    
   end
 
   # GET /profile/username/edit
@@ -16,28 +13,27 @@ class ProfileController < ApplicationController
   def index
     @users = User.all
   end
-  # PATCH/PUT /profile/username
-  def update
-      @user.signature = params[:signature].to_s
-      @user.avatar = params[:upload]
 
-      if @user.save
-        redirect_to :controller=>'profile', :action => 'show', :username => @user.username
+  # POST /profile/username
+  def update
+      if @user.update(user_params)
+        redirect_to user_profile_path(@user), notice: "Updated profile successfully"
       end
   end
 
-#GET /profile/username/delete
+  #DELETE /profile/1/delete
   def delete
     #put delete code here
     @user.destroy
-    redirect_to :controller=>'profile', :action => 'index', :username => @user.username
+    redirect_to profile_list_url, notice: "Deleted user successfully"
   end
-
 
   private
     def set_profile
-      @user = User.find_by username: params[:username].to_s
+      @user = User.find(params[:id])
     end
 
-
+    def user_params
+      params.require(:user).permit(:signature, :avatar)
+    end
 end

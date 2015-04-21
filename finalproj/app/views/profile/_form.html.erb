@@ -1,34 +1,40 @@
-<%if !@user.nil?%>
-<%= form_tag({:controller => "profile", :action => "update"}, {:multipart => true}) do%>
+<%= form_for @user, url: user_profile_update_path, method: :post do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-  <%= label_tag(:q, "Username:") %>
-  <%= label_tag(:username, @user.username) %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :signature %><br>
+    <%= f.text_area :signature, size: "80x6" %>
+  </div>
   <br><br>
-  <%= label_tag(:q, "Signature:") %>
-  <%= text_area_tag(:signature, @user.signature, size: "80x6") %>
-
-  	<br><br>
-	<%
+  <%
 	if @user.avatar.url.nil?
 		av = @default_avatar
 	else
 		av = @user.avatar.url
 	end
-	%>
-	<span id="id">Current Avatar: <%=image_tag(av, size: "100x100")%></span><br>
-
-
-  <br><br>
-  <%= label_tag(:q, "Choose New Avatar:") %>
-  <%= file_field_tag "upload" %>
-
-  	<br><br>
-	<br><br>
-	<%= submit_tag("Save") %>
+  %>
+  <span id="id">Current Avatar: 
+  	<%=image_tag(av, size: "100x100") %>
+  </span><br>
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
-
-
-
-<%else%>
-<span id="no_user">No user exists with this user name</span>
-<%end%>

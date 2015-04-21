@@ -11,8 +11,10 @@
 	  <%=image_tag(av, :class => "image_avatar")%>
 	</div>
 	<div id='user-credentials'>
-
-	  <%= link_to user.username, "/profile/" + user.username %><br>
+	  <%= link_to user_profile_path(user) do %><br>
+	  <%= user.username %>
+	  <% end %>
+	  <br>
 	  <%= user.reputation %> Rep
 	</div>
 </div>

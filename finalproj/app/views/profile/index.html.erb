@@ -36,15 +36,15 @@
 			  <%=image_tag(av, :class => "image_avatar")%>
 			</div>
 		</td>
-		<td><%= link_to u.username, "/profile/" + u.username %></td>
+		<td><%= link_to u.username, user_profile_path(u) %></td>
 		<td><%= u.email %></td>
 		<td><%= u.last_sign_in_at %></td>
 		<td><%= u.signature %></td>
 	    <%
 		if user_signed_in?
-			if current_user.isadmin
+			if current_user.isadmin && !u.isadmin
 				%>
-			      <td><%= link_to "Delete", "/profile/" + u.username + "/delete" %></td>
+			      <td><%= link_to "Delete", user_delete_path(u), method: :delete, data: { confirm: "Are you sure?" } %></td>
 				<%
 			end
 		end
