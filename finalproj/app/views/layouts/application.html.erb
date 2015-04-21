@@ -9,15 +9,17 @@
 <body>
 
 <h1 id="header">
-  <a href="/" id="root-link">Ask Mines</a>
-  <div id="header-links">
+  <span id="root-link">
+    <a href="/">Ask Mines</a>
+  </span>
+  <span id="header-buttons">
     <% if user_signed_in? %>
-      Welcome <%= current_user.username %>!  Not you? <%= link_to "Sign out", destroy_user_session_url, method: :delete %>
+      Welcome <%= current_user.username %>!  Not you? <%= button_to "Sign out", destroy_user_session_url, method: :delete %>
     <% else %>
-      <%= link_to "Sign in", new_user_session_url %>
-      <%= link_to "Sign up!", new_user_registration_url %>
+      <%= button_to "log in", new_user_session_url, method: :get %>
+      <%= button_to "sign up", new_user_registration_url, method: :get %>
     <% end %>
-  </div>
+  </span>
 </h1>
 
 <p id="notice"><%= notice %></p>
