@@ -1,1 +1,1 @@
-<li><%= link_to 'See question', question_path(notification.question)%>: <%= notification.content %></li>
+<li><%= notification.content %> <%= link_to 'See question', question_path(notification.question), target: "_blank" %></li>

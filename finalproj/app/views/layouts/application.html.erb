@@ -22,25 +22,27 @@
       <%= button_to "profile", user_profile_path(current_user), method: :get %>
     <% end %>
     <%= button_to "users", profile_list_path, method: :get %>
-    <%= button_to "search", query_path, method: :get %>
+    <!-- search button -->
+    <input id='search-button' value='search' type='button'>
   </span>
 </h1>
 
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
-
-<!-- User notifications -->
-<div id="notifications">
-  <% if user_signed_in? && !current_user.notifications.empty? %>
-    <ul>
-      <% current_user.notifications.each do |notif| %>
-        <%= render notif %>
-      <% end %>
-    </ul>
-    <%= link_to 'Done', notifications_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <hr>
+<!-- Search form, displays with jQuery -->
+<div id="search-form">
+  <%= form_tag("/search", method: :get) do %>
+    <div class="field">
+      <%= label_tag(:content, "Search for:") %>
+      <%= text_field_tag :content %>
+    </div>
+    <div class="actions">
+      <%= submit_tag("Search") %>
+      <a id='search-close'>close</a>
+    </div>
   <% end %>
 </div>
+
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
 
 <div id="wrapper">
   <div id="content">

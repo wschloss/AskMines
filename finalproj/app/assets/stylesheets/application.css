@@ -69,7 +69,7 @@ span#header-buttons {
 	float: right;
 }
 
-span#header-buttons input[type=submit] {
+span#header-buttons input {
 	border: none;
 	float: left;
 	margin-left: 10px;
@@ -79,7 +79,7 @@ span#header-buttons input[type=submit] {
 	background: black;
 }
 
-#header-buttons input[type=submit]:hover {
+#header-buttons input:hover {
 	background-color: gray;
 	cursor: pointer;
 	cursor: hand;
@@ -141,4 +141,28 @@ User rendering here
 #user-credentials a:hover {
 	color: #00CCFF;
     background: none;
+}
+
+/*
+
+Search form style
+
+*/
+
+#search-form {
+	width: 500px;
+	min-width: 500px;
+	min-height: 15%;
+	height: auto;
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px black;
+	background-color: white;
+	padding: 50px;
+	font-size: 14px;
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	margin-left: -275px;
+	display: none;
 }

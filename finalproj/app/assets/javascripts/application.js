@@ -14,3 +14,31 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// Sets up fades
+var readyFunc = function () {
+	$('#search-button').click(function() {
+		$('#search-form').fadeToggle("fast");
+		//$('div#notifications, div#wrapper').fadeTo("fast", 0.4);
+	});
+
+	$('#search-close').click(function() {
+		$('#search-form').fadeToggle("fast");
+		//$('div#notifications, div#wrapper').fadeTo("fast", 1);
+	});
+
+	$('#notifications').fadeIn("slow");
+
+	$('[id=question-wrapper]').hover(
+		function() {
+			$('#question-preview', this).fadeToggle("fast");
+		},
+		function() {
+			$('#question-preview', this).fadeToggle("fast");
+		}
+	);
+}
+
+$(document).ready(readyFunc);
+// turbolinks doesn't always run ready, so this runs the func too
+$(document).on("page:load", readyFunc);

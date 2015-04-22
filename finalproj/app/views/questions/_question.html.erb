@@ -37,4 +37,5 @@
       <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
   </span>
+  <p id="question-preview"><%= question.content[0..150] %>...</p>
 </div>

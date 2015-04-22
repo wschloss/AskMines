@@ -1,3 +1,15 @@
+<!-- User notifications, display with jQuery -->
+<% if user_signed_in? && !current_user.notifications.empty? %>
+  <div id="notifications">
+    <ul>
+      <% current_user.notifications.each do |notif| %>
+        <%= render notif %>
+      <% end %>
+    </ul>
+    <%= link_to 'Done', notifications_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
+
 <% if !user_signed_in? %>
   <p>Sign in to post a question!</p>
 <% else %>

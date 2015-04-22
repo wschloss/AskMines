@@ -85,6 +85,19 @@ p#list-content {
 	float: right;
 }
 
+#question-preview {
+	display: none;
+	float: right;
+	padding: 10px;
+	position: absolute;
+	right: 3%;
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px black;
+	background-color: white;
+	width: 300px;
+}
+
 // Show question styline
 #qtitle {
 	font-size: 24px;
