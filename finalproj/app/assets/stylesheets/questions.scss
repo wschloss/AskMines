@@ -3,62 +3,67 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // Question index styling
-p#question-list-header {
+#qlist-header {
+	width: 100%;
+}
+
+p#list-content {
 	display: block;
+	width: 45%;
 	float: left;
+	font-size: 18px;
 }
 
 // Single tag styling
 #tag {
-	height: 35px;
+	height: 20px;
 	width: auto;
-	background-color: #F5C4C4;
-	border-radius: 5px;
+	margin-right: 5px;
+	margin-left: 5px;
+	padding: 3px;
+	background-color: #B2D3E8;
 	float: left;
 	text-align: center;
-	line-height: 30px;
-	margin: 5px;
+	color: #006BB2;
 }
 
 // Question entry styling
 #question-wrapper {
 	width: 100%;
-	min-height: 90px;
 	height: auto;
 	overflow: auto;
-	clear: both;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	border-top: 1px solid grey;
-	border-bottom: 1px solid grey;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
 
 	span, div { 
+		display: block;
 		float: left;
-		margin-left: 5px;
-		margin-right: 5px;
+		margin-left: 3px;
+		margin-right: 3px;
 	}
 }
 
 #question-upvotes, #question-answers {
-	width: 10%;
+	width: 8%;
 	height: 100%;
 	text-align: center;
-	padding-top: 20px;
-	font-size: 15px;
+	font-size: 12px;
 	padding: auto;
 }
 
 #title-tags-wrap {
 	width: 70%;
 	height: 100%;
-	//border: 1px solid black;
+
 }
 
 #question-title {
 	width: 100%;
 	text-align: left;
 	font-size: 15px;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	a { 
 		color: #00A6CF; 
 		text-decoration: none;
@@ -72,23 +77,57 @@ p#question-list-header {
 
 #question-tags {
 	width: 60%;
+	height: 25px;
 }
 
 #question-author {
 	width: 25%;
-	height: 100%;
+	height: 25px;
+	float: right;
+}
+
+// Show question styline
+#qtitle {
+	font-size: 24px;
+	margin-bottom: 20px;
+	line-height: 25px;
+}
+
+#qcontent-wrapper {
+	width: 100%;
+	min-height: 100px;
+	height: auto;
+	overflow: auto;
+
+	div { float: left; }
+}
+
+#qupvotes {
+	width: 8%;
+	height: 10%;
+	text-align: center;
+	font-size: 15px;
+	padding: auto;
+}
+
+#question-content {
+	width: 80%;
+	padding-left: 10px;
+	font-size: 14px;
+}
+
+#qtags {
+	margin-left: 9%;
+	margin-top: 5%;
+	clear: both;
+}
+
+#quser {
+	float: right;
+	width: 20%;
 	text-align: right;
 }
 
-#container
-{
-	width: 100%;	
-}
-
-#question_list {
-	float: left;
-}
-
-#question_query {
-	float: right;
+hr#clear-both {
+	clear: both;
 }

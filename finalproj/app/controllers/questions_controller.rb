@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @questions = Question.all
+    @questions = Question.all.order(:id).reverse
   end
 
   #GET /query

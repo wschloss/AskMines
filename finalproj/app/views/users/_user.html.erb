@@ -1,10 +1,10 @@
-		<%
-		if user.avatar.url.nil?
-			av = @default_avatar
-		else
-			av = user.avatar.url
-		end
-		%>
+<%
+  if user.avatar.url.nil?
+    av = @default_avatar
+  else
+    av = user.avatar.url
+  end
+%>
 <div id='user-wrapper'>
 	<!-- Will change to an image tag -->
 	<div id='avatar'>

@@ -20,16 +20,15 @@
       <% question.tags.each do |tag| %>
         <%= render tag %>
       <% end %>
-    </span><br>
-  </div>
-  <span id="question-author">
+    </span>
+    <span id="question-author">
       asked by 
       <%= link_to user_profile_path(question.user) do %>
         <%= question.user.username %> 
       <% end %>
       (<%= question.user.reputation %>)
-  </span>
-  <!--
+    </span>
+  </div>
   <span id="question-mod-links">
     <% if user_signed_in? && (current_user.id == question.user_id || current_user.isadmin) %>
       <%= link_to 'Edit', edit_question_path(question) %>
@@ -38,5 +37,4 @@
       <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
   </span>
-  -->
 </div>

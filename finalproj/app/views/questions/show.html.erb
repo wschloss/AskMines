@@ -1,8 +1,38 @@
-<%= render @question %>
-
-<%= @question.content %>
-
+<div id="qtitle">
+  <%= @question.title %>
+</div>
 <hr>
+<div id="qcontent-wrapper">
+  <div id="qupvotes">
+    <%= @question.upvotes %><br>
+    upvotes
+    <% if !user_signed_in? || current_user.id != @question.user_id %>
+      <%= button_to 'Upvote!', question_upvote_path(@question) %>
+    <% end %>
+  </div>
+  <div id="question-content">
+    <%= @question.content %>
+  </div>
+  <div id="qlinks">
+    <% if user_signed_in? && (current_user.id == @question.user_id || current_user.isadmin) %>
+      <%= link_to 'Edit', edit_question_path(@question) %>
+    <% end %>
+    <% if user_signed_in? && current_user.isadmin %>
+      <%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+</div>
+<div id="qtags">
+  <% @question.tags.each do |tag| %>
+    <%= render tag %>
+  <% end %>
+</div>
+<div id="quser">
+  <%= render @question.user %>
+</div>
+
+<hr id="clear-both">
+
 <% unless @answers.empty? %>
   <p>Answers</p>
   <% @answers.each do |ans| %>
