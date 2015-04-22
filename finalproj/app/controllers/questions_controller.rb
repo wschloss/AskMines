@@ -15,11 +15,6 @@ class QuestionsController < ApplicationController
     @questions = Question.all.order(:id).reverse
   end
 
-  #GET /query
-  def query
-    # Just displays the search form
-  end
-
   #GET /search
   def search
     # Return the list of question based on the :content
