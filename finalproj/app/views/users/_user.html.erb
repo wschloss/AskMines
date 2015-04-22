@@ -6,13 +6,12 @@
   end
 %>
 <div id='user-wrapper'>
-	<!-- Will change to an image tag -->
 	<div id='avatar'>
 	  <%=image_tag(av, :class => "image_avatar")%>
 	</div>
 	<div id='user-credentials'>
-	  <%= link_to user_profile_path(user) do %><br>
-	  <%= user.username %>
+	  <%= link_to user_profile_path(user) do %>
+	    <%= user.username %>
 	  <% end %>
 	  <br>
 	  <%= user.reputation %> Rep

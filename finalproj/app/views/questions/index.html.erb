@@ -1,3 +1,9 @@
+<% if !user_signed_in? %>
+  <p>Sign in to post a question!</p>
+<% else %>
+  <%= link_to 'Post Question', new_question_path %>
+<% end %>
+
 <div id="qlist-header">
   <p id="list-content">Top Questions</p>
   <!-- could put tabs here to filter by tags -->
@@ -5,11 +11,4 @@
 
 <% @questions.each do |question| %>
   <%= render question %>
-<% end %>
-
-<br>
-<% if !user_signed_in? %>
-  <p>Sign in to post a question!</p>
-<% else %>
-  <%= link_to 'New Question', new_question_path %>
 <% end %>
