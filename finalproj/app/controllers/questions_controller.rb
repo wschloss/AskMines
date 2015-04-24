@@ -21,7 +21,30 @@ class QuestionsController < ApplicationController
     # parameter sent by the form
 
     # Testing the content comes through...
+    # Search content
     @content = params[:content]
+    
+    @foundqs = []
+
+    # First check for tag, if it is a tag, list those questions
+    
+
+    # Otherwise, check content and title of questions
+    Question.all.each do |q|
+	#Check the content of the question
+	if(q.content.include? @content)
+		@foundqs.push(q)		
+	end	
+
+	#Check the title as well
+	if(q.title.include? @content and not @foundqs.include? q)
+		@foundqs.push(q)
+	end
+    end
+
+    #Then, Sort by upvotes first, then by answers
+    @foundqs.sort_by{|q| [q[:upvotes]]}#, q.answers.size]}#.reverse!()
+    @foundqs.reverse!
 
     # @questions = search_by_content(@content)
   end

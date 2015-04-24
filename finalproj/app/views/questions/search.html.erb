@@ -1,3 +1,15 @@
 <!-- Should display all questions returned from the search action in question controller -->
 
-<%= @content %>
+<br><br>
+<div id="s-header">
+	Search Content: "<%= @content %>"
+</div>
+<br><br><br>
+<!--< %= @foundqs %>-->
+<div id="search-content">
+	<% if @foundqs.size > 0 %>
+	<% @foundqs.each do |q| %>
+	<%= render "question", question:  q%>
+	<% end %>
+	<% end %>
+</div>
