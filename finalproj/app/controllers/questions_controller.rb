@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
   before_action :set_tags, only: [:show]
 
   # User authentication to change questions
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :filter]
   # Ensure only the owner of the question can modify it
   before_action :confirm_owner, only: [:edit, :update, :destroy]
 
@@ -15,12 +15,36 @@ class QuestionsController < ApplicationController
     @questions = Question.all.order(:id).reverse
   end
 
+  # GET /questions/filter
+  # Filters questions by tag and returns
+  def filter
+    @questions = []
+    @category = params[:category]
+    @category.downcase! unless @category.nil?
+
+    Question.all.each do |q|
+      q.tags.each do |t|
+        if t.category == @category
+          @questions.push(q)
+        end
+      end
+    end unless @category.nil?
+
+    if @category.nil?
+      if params[:top]
+        @questions = Question.all.order(:upvotes).reverse
+      else
+        @questions = Question.all.order(:id).reverse
+      end
+    end
+
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
   #GET /search
   def search
-    # Return the list of question based on the :content
-    # parameter sent by the form
-
-    # Testing the content comes through...
     # Search content
     @content = params[:content]
     
@@ -28,31 +52,29 @@ class QuestionsController < ApplicationController
 
     # First check for tag, if it is a tag, list those questions
     Tag.all.each do |t|
-	if(t.category.downcase.include? @content)
-		@foundqs.push(Question.find(t.question_id))
-	end
+	    if(t.category.downcase.include? @content)
+		    @foundqs.push(Question.find(t.question_id))
+	    end
     end  
 
     # Otherwise, check content and title of questions
     if(@foundqs.size <= 0) 
-	   Question.all.each do |q|
-		#Check the content of the question
-		if(q.content.downcase.include? @content)
-			@foundqs.push(q)		
-		end	
+	    Question.all.each do |q|
+  		  #Check the content of the question
+  	    if(q.content.downcase.include? @content)
+  			  @foundqs.push(q)		
+  		  end	
 
-		#Check the title as well
-		if(q.title.downcase.include? @content and not @foundqs.include? q)
-			@foundqs.push(q)
-		end
+  		  #Check the title as well
+  		  if(q.title.downcase.include? @content and not @foundqs.include? q)
+  			  @foundqs.push(q)
+  		  end
     	end
     end
 
     #Then, Sort by upvotes first, then by answers
     @foundqs.sort_by!{|q| q[:upvotes]}#, q.answers.size]}#.reverse!()
     @foundqs.reverse!
-
-    # @questions = search_by_content(@content)
   end
 
   # GET /questions/1

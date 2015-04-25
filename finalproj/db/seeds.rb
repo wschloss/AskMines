@@ -48,9 +48,9 @@ q3.answers.create(content: 'Since I am not an eater myself, I can\'t help you.',
 q3.answers.create(content: 'Sherpa house, where spicy really means spicy', user_id: u3.id)
 
 # Seed a few tags for questions
-q1.tags.create(category: 'Fun')
-q1.tags.create(category: 'Other')
-q2.tags.create(category: 'Other')
-q3.tags.create(category: 'Food')
-q3.tags.create(category: 'Housing')
+q1.tags.create(category: 'fun')
+q1.tags.create(category: 'other')
+q2.tags.create(category: 'other')
+q3.tags.create(category: 'food')
+q3.tags.create(category: 'housing')
 

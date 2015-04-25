@@ -1,11 +1,10 @@
-<h1>Listing Profiles</h1>
+<h1>Users</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Avatar</th>
-      <th>Username</th>
-      <th>Email Address</th>
+      <th>User</th>
+      <th>Email</th>
       <th>Last Logged In</th>
       <th>Signature</th>
       <%
@@ -17,7 +16,7 @@
 				<%
 			end
 		end
-		%>
+	  %>
     </tr>
   </thead>
 
@@ -32,11 +31,8 @@
 		%>
 		<tr>
 		<td>
-			<div id='avatar'>
-			  <%=image_tag(av, :class => "image_avatar")%>
-			</div>
+			<%= render u %>
 		</td>
-		<td><%= link_to u.username, user_profile_path(u) %></td>
 		<td><%= u.email %></td>
 		<td><%= u.last_sign_in_at %></td>
 		<td><%= u.signature %></td>
@@ -49,7 +45,6 @@
 			end
 		end
 		%>
-
 		</tr>
     <% end %>
   </tbody>

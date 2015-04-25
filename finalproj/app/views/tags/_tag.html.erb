@@ -1,3 +1,5 @@
-<div id="tag">
-  <%= tag.category %>
-</div>
+<%= link_to filter_path(category: tag.category), remote: true do %>
+  <div id="tag">
+    <%= tag.category %>
+  </div>
+<% end %>

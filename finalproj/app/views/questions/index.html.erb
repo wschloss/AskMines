@@ -17,10 +17,16 @@
 <% end %>
 
 <div id="qlist-header">
-  <p id="list-content">Top Questions</p>
-  <!-- could put tabs here to filter by tags -->
+    <p id="list-content">Questions</p>
+    <%= link_to filter_path, remote: true do %>
+      <p id="filter-button">all</p>
+    <% end %>
+    <%= link_to filter_path(top: true), remote: true do %>
+      <p id="filter-button">top</p>
+    <% end %>
 </div>
-
-<% @questions.each do |question| %>
-  <%= render question %>
-<% end %>
+<div id="index">
+  <% @questions.each do |question| %>
+    <%= render question %>
+  <% end %>
+</div>

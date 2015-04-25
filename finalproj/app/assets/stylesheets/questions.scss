@@ -14,6 +14,21 @@ p#list-content {
 	font-size: 18px;
 }
 
+p#list-content:hover {
+	color: black;
+}
+
+p#filter-button {
+	width: 5%;
+	text-align: right;
+	float: right;
+	font-size: 18px;
+}
+
+p#filter-button:hover {
+	color: black;
+}
+
 // Single tag styling
 #tag {
 	height: 20px;
@@ -140,10 +155,9 @@ p#list-content {
 	text-align: right;
 }
 
-hr#clear-both {
+hr#clear-both, br#clear-both {
 	clear: both;
 }
-
 
 //Search Styling
 #s-header{

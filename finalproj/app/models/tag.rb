@@ -3,5 +3,5 @@ class Tag < ActiveRecord::Base
   belongs_to :question
 
   # Allowed tag categories
-  TAG_OPTIONS = ['food', 'fun', 'classes', 'housing', 'other']
+  TAG_OPTIONS = ['food', 'fun', 'classes', 'housing', 'clubs', 'other']
 end
