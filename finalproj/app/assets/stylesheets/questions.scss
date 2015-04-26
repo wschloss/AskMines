@@ -14,6 +14,21 @@ p#list-content {
 	font-size: 18px;
 }
 
+p#list-content:hover {
+	color: black;
+}
+
+p#filter-button {
+	width: 5%;
+	text-align: right;
+	float: right;
+	font-size: 18px;
+}
+
+p#filter-button:hover {
+	color: black;
+}
+
 // Single tag styling
 #tag {
 	height: 20px;
@@ -25,6 +40,34 @@ p#list-content {
 	float: left;
 	text-align: center;
 	color: #006BB2;
+}
+
+#tag:hover {
+	background-color: #D1E5F1;
+}
+
+.form-button-tags {
+	height: 20px;
+	width: auto;
+	margin: 5px;
+	margin-bottom: 10px;
+	padding: 3px;
+	background-color: #D1E5F1;
+	float: left;
+	text-align: center;
+	color: #006BB2;
+}
+
+.form-button-tags:hover {
+	background-color: #B2D3E8;
+}
+
+.highlighted {
+	background-color: #B2D3E8;
+}
+
+select {
+	display: none;
 }
 
 // Question entry styling
@@ -140,10 +183,9 @@ p#list-content {
 	text-align: right;
 }
 
-hr#clear-both {
+hr#clear-both, br#clear-both {
 	clear: both;
 }
-
 
 //Search Styling
 #s-header{
