@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
     end
 
     #Then, Sort by upvotes first, then by answers
-    @foundqs.sort_by!{|q| q[:upvotes]}#, q.answers.size]}#.reverse!()
+    @foundqs.sort_by!{|q| [q[:upvotes], q.answers.size]}#, q.answers.size]}#.reverse!()
     @foundqs.reverse!
 
     # @questions = search_by_content(@content)
