@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
 
     # First check for tag, if it is a tag, list those questions
     Tag.all.each do |t|
-	if(t.category.downcase.include? @content)
+	if(t.category.downcase.include? @content.downcase)
 		@foundqs.push(Question.find(t.question_id))
 	end
     end  
@@ -37,12 +37,12 @@ class QuestionsController < ApplicationController
     if(@foundqs.size <= 0) 
 	   Question.all.each do |q|
 		#Check the content of the question
-		if(q.content.downcase.include? @content)
+		if(q.content.downcase.include? @content.downcase)
 			@foundqs.push(q)		
 		end	
 
 		#Check the title as well
-		if(q.title.downcase.include? @content and not @foundqs.include? q)
+		if(q.title.downcase.include? @content.downcase and not @foundqs.include? q)
 			@foundqs.push(q)
 		end
     	end
