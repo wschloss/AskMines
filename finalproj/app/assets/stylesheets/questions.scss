@@ -42,6 +42,34 @@ p#filter-button:hover {
 	color: #006BB2;
 }
 
+#tag:hover {
+	background-color: #D1E5F1;
+}
+
+.form-button-tags {
+	height: 20px;
+	width: auto;
+	margin: 5px;
+	margin-bottom: 10px;
+	padding: 3px;
+	background-color: #D1E5F1;
+	float: left;
+	text-align: center;
+	color: #006BB2;
+}
+
+.form-button-tags:hover {
+	background-color: #B2D3E8;
+}
+
+.highlighted {
+	background-color: #B2D3E8;
+}
+
+select {
+	display: none;
+}
+
 // Question entry styling
 #question-wrapper {
 	width: 100%;

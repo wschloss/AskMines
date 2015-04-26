@@ -11,7 +11,7 @@ class ProfileController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.all.order(:reputation).reverse
   end
 
   # POST /profile/username

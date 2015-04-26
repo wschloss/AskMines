@@ -148,7 +148,7 @@ class QuestionsController < ApplicationController
     end
 
     def set_answers
-      @answers = Question.find(params[:id]).answers
+      @answers = Question.find(params[:id]).answers.order(:upvotes).reverse
     end
 
     def set_tags

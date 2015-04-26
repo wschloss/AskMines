@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-// Sets up fades
+// Sets up fades for popups, previews for questions, and tag button on question form
 var readyFunc = function () {
 	$('#search-button').click(function() {
 		$('#search-form').fadeToggle("fast");
@@ -37,6 +37,18 @@ var readyFunc = function () {
 			$('#question-preview', this).fadeToggle("fast");
 		}
 	);
+
+	$('.form-button-tags').click(function() {
+		var categoryElement = $(this);
+		categoryElement.toggleClass('highlighted');
+		var selectElement = $('select option[value=' + categoryElement.html() + ']');
+		// Toggle selection
+		if (selectElement.attr('selected')) {
+			selectElement.removeAttr('selected');
+		} else {
+			selectElement.attr('selected','selected');
+		}
+	});
 }
 
 $(document).ready(readyFunc);

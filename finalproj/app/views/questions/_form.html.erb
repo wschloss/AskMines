@@ -19,11 +19,17 @@
     <%= f.label :content %><br>
     <%= f.text_area :content, size: "75x25" %>
   </div>
-  <!-- Sends selected tags to build -->
+  <!-- Sends selected tags to build, hidden, set with the buttons -->
   <div class="field">
     <%= f.label :tags %><br>
-    <%= select_tag :tags, options_for_select(Tag::TAG_OPTIONS), {multiple: true} %>
+    <%= select_tag :tags, options_for_select(Tag::TAG_OPTIONS), { multiple: true } %>
   </div>
+  <% Tag::TAG_OPTIONS.each do |category| %>
+    <div class="form-button-tags">
+      <%= category %>
+    </div>
+  <% end %>
+  <br id="clear-both">
   <div class="actions">
     <%= f.submit %>
   </div>
