@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
   before_action :set_tags, only: [:show]
 
   # User authentication to change questions
-  before_action :authenticate_user!, except: [:index, :show, :filter]
+  before_action :authenticate_user!, except: [:index, :show, :search, :filter]
   # Ensure only the owner of the question can modify it
   before_action :confirm_owner, only: [:edit, :update, :destroy]
 
