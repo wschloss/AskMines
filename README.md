@@ -1,6 +1,9 @@
 # Ask Mines
+
 #### A web app to ask questions about CSM and Golden CO
-Developed with Ruby 2.0.0 and Rails 4.2.0
+
+*Developed with Ruby 2.0.0 and Rails 4.2.0*
+
 =====
 
 ## Description
